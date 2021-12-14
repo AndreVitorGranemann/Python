@@ -1,0 +1,29 @@
+class PessoaRepository:
+    __pessoas = []
+
+    def create(self, nome):
+        self.__pessoas.append(nome)
+
+    def update(self, nome_antigo, nome_novo):
+        if(nome_antigo in self.__pessoas):
+            index = self.__pessoas.index(nome_antigo)
+            self.__pessoas[index] = nome_novo
+
+    def read(self):
+        return self.__pessoas
+
+    def delete(self, nome):
+        self.__pessoas.remove(nome)
+
+
+
+repository = PessoaRepository()
+
+repository.create('andre')
+repository.create('andrezin')
+print(repository.read())
+
+repository.update('Andre', 'Andre Vitor')
+print(repository.read())
+repository.delete('valor atributo')
+print(repository.read())
